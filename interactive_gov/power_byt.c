@@ -176,8 +176,6 @@ static void intel_power_hint(struct power_module *module, power_hint_t hint,
 			}
 		}
 		break;
-		case POWER_HINT_PAGELOADING:
-			sysfs_write(BOOST_PULSE_SYSFS,"1");
 		default:
 		break;
     }
