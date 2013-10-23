@@ -21,22 +21,17 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := power.$(TARGET_PRODUCT)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
-ifeq ($(POWERHAL_CLV), true)
-	LOCAL_SRC_FILES := power_clv.c
+ifeq ($(TARGET_BOARD_PLATFORM), clovertrail)
+    LOCAL_CFLAGS += -DINTEL_TOUCHBOOST_FREQ=\"1333000\"
 endif
-ifeq ($(POWERHAL_MFLD), true)
-	LOCAL_SRC_FILES := power_mfld.c
+ifeq ($(TARGET_BOARD_PLATFORM), merrifield)
+    LOCAL_CFLAGS += -DINTEL_TOUCHBOOST_FREQ=\"1333000\"
 endif
-ifeq ($(POWERHAL_GI), true)
-	LOCAL_SRC_FILES := power_mfld.c
-endif
-ifeq ($(POWERHAL_MRFLD), true)
-	LOCAL_SRC_FILES := power_mrfld.c
-endif
-ifeq ($(POWERHAL_BYT), true)
-	LOCAL_SRC_FILES := power_byt.c
+ifeq ($(TARGET_BOARD_PLATFORM), baytrail)
+    LOCAL_CFLAGS += -DINTEL_TOUCHBOOST_FREQ=\"1463000\"
 endif
 
+LOCAL_SRC_FILES := power.c
 LOCAL_SHARED_LIBRARIES := liblog
 LOCAL_MODULE_TAGS := optional
 

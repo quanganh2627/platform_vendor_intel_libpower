@@ -109,7 +109,7 @@ static int sysfs_read(char *path, char *s, int num_bytes)
 static void intel_power_init(struct power_module *module)
 {
 	ALOGW("**Intel Power HAL initialisation**\n");
-	sysfs_write(TOUCHBOOST_SYSFS, "1463000");
+	sysfs_write(TOUCHBOOST_SYSFS, INTEL_TOUCHBOOST_FREQ);
 }
 
 static void intel_power_set_interactive(struct power_module *module, int on)
